@@ -3,9 +3,7 @@
 
 name: Build-and-Release
 
-on:
-  release:
-    types: created
+on: [push]
 
 jobs:
   build_and_publish_to_pipy:
@@ -32,8 +30,6 @@ jobs:
         python setup.py sdist bdist_wheel --plat-name=manylinux2014_x86_64
         python setup.py bdist_wheel --plat-name=macosx-12.6-x86_64
         python setup.py bdist_wheel --plat-name=win_amd64
-    - name: Publish package to PyPi
-      uses: pypa/gh-action-pypi-publish@release/v1
 
   buildassets:
     name: Build packages
